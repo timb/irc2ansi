@@ -5,15 +5,16 @@ var readline = require('readline');
 var colorcode_to_ansi = require('../src/to_ansi');
 
 var argv = require('minimist')(process.argv.slice(2), {
-  alias: {p: "palette", h: "help", v: "version"},
+  alias: {p: "palette", h: "help", v: "version", e: "encoding"},
   boolean: ['h', 'v']
 });
 
 // console.log(argv)
 
 var opts = {};
-
 if ("p" in argv) opts.palette = argv.p;
+
+var encoding = "e" in argv ? argv.e : "utf8";
 
 if (argv.v) {
     return console.log(require('../package.json').version);
@@ -30,7 +31,7 @@ if ((argv.h) ||
 
 // passed a filename
 if (argv._.length > 0){
-  fs.readFile(argv._[0], 'utf8', function(err, data){
+  fs.readFile(argv._[0], encoding, function(err, data){
     if (err) return console.log(err);
     console.log(colorcode_to_ansi(data, opts))
   });
@@ -39,6 +40,7 @@ if (argv._.length > 0){
 
 // piped in input
 if (argv._.length === 0){
+  process.stdin.setEncoding(encoding);
   var rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,

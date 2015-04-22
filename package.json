@@ -1,6 +1,6 @@
 {
   "name": "irc2ansi",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "draw irc formatted text to a terminal",
   "author": "@timb",
   "license": "WTFPL",

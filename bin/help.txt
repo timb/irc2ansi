@@ -4,3 +4,5 @@ Draw irc formatted text to a terminal
 Options:
   -p palette
               Use a different palette (default: mirc)
+  -e encoding
+              Load file with a different encoding like ascii or binary (default: utf8)
