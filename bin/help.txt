@@ -1,0 +1,6 @@
+Usage: irc2ansi [file] [options]
+Draw irc formatted text to a terminal
+
+Options:
+  -p palette
+              Use a different palette (default: mirc)
